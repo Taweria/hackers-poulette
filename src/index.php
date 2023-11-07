@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body class="font-julius bg-white text-black">
 
-    <div class="flex justify-center w-45 h-auto"> <img src="../assets/storage/hackers-poulette-logo.png" alt="hackers poulette logo" class="object-fill"></div>
+    <div class="flex justify-center w-40 h-auto"> <img src="../assets/storage/hackers-poulette-logo.png" alt="hackers poulette logo" class="object-fill"></div>
 
     <div class="flex justify-center">
       <h1 class="font-semibold text-3xl m-5"> Contact Form </h1>
