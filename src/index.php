@@ -36,16 +36,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   // Validate form data
   $errors = array();
-  if (strlen($name) < 2 && strlen($name) > 50 ) {
+  if (strlen($name) < 2 OR strlen($name) > 50 OR preg_match('/^[a-zA-Z]+$/', $name)) {
     $errors[] = 'Name invalid';
   }
-  if (strlen($lastname) < 2 && strlen($lastname) > 50) {
+  if (strlen($lastname) < 2 OR strlen($lastname) > 50 OR preg_match('/^[a-zA-Z]+$/', $lastname)) {
     $errors[] = 'Lastname invalid';
   }
-  if (!filter_var($email, FILTER_VALIDATE_EMAIL) && strlen($email) > 50 && strlen($email) < 2) {
+  if (!filter_var($email, FILTER_VALIDATE_EMAIL) OR strlen($email) > 50 OR strlen($email) < 2) {
     $errors[] = 'Email invalid';
   }
-  if (strlen($country) < 2 && strlen($country) > 50) {
+  if (strlen($country) < 2 OR strlen($country) > 50 OR preg_match('/^[a-zA-Z]+$/', $country)) {
     $errors[] = 'Country invalid';
   }
 
@@ -118,13 +118,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           if (strlen($name) < 2) {
             echo "<p class='text-red-500 whitespace-pre-line'>Must be at least 2 characters long</p>";
           }
-        }
-
-        if (isset($_POST['name'])) {
-          $name = $_POST['name'];
-          if (strlen($name) > 50) {
+          elseif (!preg_match('/^[a-zA-Z]+$/', $name)) {
+            echo "<p class='text-red-500 whitespace-pre-line'>Name must not contain numbers</p>";
+          }
+          else if (strlen($name) > 50) {
             echo "<p class='text-red-500 whitespace-pre-line'>Can't be more than 50 characters long</p>";
           }
+          
         }
         ?>
       </div>
@@ -145,13 +145,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           if (strlen($lastname) < 2) {
             echo "<p class='text-red-500 whitespace-pre-line'>Must be at least 2 characters long</p>";
           }
-        }
-
-        if (isset($_POST['lastname'])) {
-          $lastname = $_POST['lastname'];
-          if (strlen($lastname) > 50) {
+          elseif (!preg_match('/^[a-zA-Z]+$/', $lastname)) {
+            echo "<p class='text-red-500 whitespace-pre-line'>Lastname must not contain numbers</p>";
+          }
+          else if (strlen($lastname) > 50) {
             echo "<p class='text-red-500 whitespace-pre-line'>Can't be more than 50 characters long</p>";
           }
+          
         }
       ?>
       </div>
@@ -208,12 +208,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (strlen($country) < 2) {
               echo '<p class="text-red-500 whitespace-pre-line">Must be at least 2 characters long</p>';
             }
-          }
-
-          if (isset($_POST['country'])) {
-            $country = $_POST['country'];
-            if (strlen($country) > 50) {
+            else if(strlen($country) > 50) {
               echo "<p class='text-red-500 whitespace-pre-line'>Can't be more than 50 characters long</p>";
+            }
+            else if (!preg_match('/^[a-zA-Z]+$/', $country)) {
+              echo "<p class='text-red-500 whitespace-pre-line'>Country must not contain numbers</p>";
             }
           }
         ?>
