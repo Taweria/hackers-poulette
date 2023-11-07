@@ -24,58 +24,7 @@ function sanitize($data){
   return $data;
 }
 
-// send email if no errors
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $name = sanitize($_POST["name"]);
-  $lastname = sanitize($_POST["lastname"]);
-  $gender = $_POST["gender"];
-  $email = sanitize($_POST["email"]);
-  $country = sanitize($_POST["country"]);
-  $subject = $_POST["subject"];
-  $message = $_POST["message"];
 
-  // Validate form data
-  $errors = array();
-  if (strlen($name) < 2 OR strlen($name) > 50 OR !preg_match('/^[a-zA-Z]+$/', $name)) {
-    $errors[] = 'Name invalid';
-  }
-  if (strlen($lastname) < 2 OR strlen($lastname) > 50 OR !preg_match('/^[a-zA-Z]+$/', $lastname)) {
-    $errors[] = 'Lastname invalid';
-  }
-  if (!filter_var($email, FILTER_VALIDATE_EMAIL) OR strlen($email) > 50) {
-    $errors[] = 'Email invalid';
-  }
-  if (strlen($country) < 2 OR strlen($country) > 50 OR !preg_match('/^[a-zA-Z]+$/', $country)) {
-    $errors[] = 'Country invalid';
-  }
-
-  // If there are no errors, send the email
-  if (empty($errors)) {
-    
-    try {
-        //Server settings
-        $mail = new PHPMailer();
-        $mail->SMTPSecure = 'tls';
-        $mail->Username = $_ENV["user"];
-        $mail->Password = $_ENV["password"];
-        $mail->AddAddress($email);
-        $mail->FromName = "Ali Elodie";
-        $mail->Subject = "Hackers Poulette";
-        $mail->Body = $name . ", " .$lastname. ", " .$gender. ", " .$email. ", " .$country. ", " .$subject. ", " .$message;
-        $mail->Host = "smtp-mail.outlook.com";
-        $mail->Port = 587;
-        $mail->IsSMTP();
-        $mail->SMTPAuth = true;
-        $mail->From = $mail->Username;
-        $mail->Send();
-    
-        echo 'Message has been sent';
-    } catch (Exception $e) {
-        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-    }
-  
-  }
-}
 ?>
 
 <!DOCTYPE html>
@@ -102,6 +51,63 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <div class="flex justify-center">
       <h1 class="font-semibold text-3xl m-5"> Contact Form </h1>
+    </div>
+
+    <div class="flex justify-center">
+      <?php
+      // send email if no errors
+      if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $name = sanitize($_POST["name"]);
+        $lastname = sanitize($_POST["lastname"]);
+        $gender = $_POST["gender"];
+        $email = sanitize($_POST["email"]);
+        $country = sanitize($_POST["country"]);
+        $subject = $_POST["subject"];
+        $message = $_POST["message"];
+
+        // Validate form data
+        $errors = array();
+        if (strlen($name) < 2 OR strlen($name) > 50 OR !preg_match('/^[a-zA-Z]+$/', $name)) {
+          $errors[] = 'Name invalid';
+        }
+        if (strlen($lastname) < 2 OR strlen($lastname) > 50 OR !preg_match('/^[a-zA-Z]+$/', $lastname)) {
+          $errors[] = 'Lastname invalid';
+        }
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL) OR strlen($email) > 50) {
+          $errors[] = 'Email invalid';
+        }
+        if (strlen($country) < 2 OR strlen($country) > 50 OR !preg_match('/^[a-zA-Z]+$/', $country)) {
+          $errors[] = 'Country invalid';
+        }
+
+        // If there are no errors, send the email
+        if (empty($errors)) {
+          
+          try {
+              //Server settings
+              $mail = new PHPMailer();
+              $mail->SMTPSecure = 'tls';
+              $mail->Username = $_ENV["user"];
+              $mail->Password = $_ENV["password"];
+              $mail->AddAddress($email);
+              $mail->FromName = "Ali Elodie";
+              $mail->Subject = "Hackers Poulette";
+              $mail->Body = $name . ", " .$lastname. ", " .$gender. ", " .$email. ", " .$country. ", " .$subject. ", " .$message;
+              $mail->Host = "smtp-mail.outlook.com";
+              $mail->Port = 587;
+              $mail->IsSMTP();
+              $mail->SMTPAuth = true;
+              $mail->From = $mail->Username;
+              $mail->Send();
+          
+              echo "<p> Message has been sent </p>";
+          } catch (Exception $e) {
+              echo "<p> >Message could not be sent. Mailer Error: {$mail->ErrorInfo} </p>";
+          }
+        
+        }
+      }
+      ?>
     </div>
 
     <form class="flex flex-col justify-center items-center" method="post" action="">
