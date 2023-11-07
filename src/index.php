@@ -231,7 +231,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label for="message">Message:</label>
         <!-- <textarea id="message" class="bg-blue w-80 rounded-2xl px-3" name="message" rows="5" placeholder="Type here your message">Type here your message</textarea> -->
         <?php
-        if (isset($_POST["email"])){
+        if (isset($_POST["message"])){
           echo ("<textarea id='message' class='bg-blue w-80 rounded-2xl px-3' name='message' rows='3' placeholder='Type here your message'></textarea>");
         }
         else{
