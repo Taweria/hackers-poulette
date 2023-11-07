@@ -615,6 +615,10 @@ video {
   border-radius: 1rem;
 }
 
+.rounded-xl {
+  border-radius: 0.75rem;
+}
+
 .bg-blue {
   --tw-bg-opacity: 1;
   background-color: rgb(13 129 135 / var(--tw-bg-opacity));

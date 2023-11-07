@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if (strlen($lastname) < 2 OR strlen($lastname) > 50 OR !preg_match('/^[a-zA-Z]+$/', $lastname)) {
     $errors[] = 'Lastname invalid';
   }
-  if (!filter_var($email, FILTER_VALIDATE_EMAIL) OR strlen($email) > 50 OR strlen($email) < 2) {
+  if (!filter_var($email, FILTER_VALIDATE_EMAIL) OR strlen($email) > 50) {
     $errors[] = 'Email invalid';
   }
   if (strlen($country) < 2 OR strlen($country) > 50 OR !preg_match('/^[a-zA-Z]+$/', $country)) {
@@ -130,10 +130,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </div>
 
       <div class="flex flex-col justify-start my-1">
-        <label for="name">Lastname:</label>
+        <label for="lastname">Lastname:</label>
         <!-- <input type="text" id="lastname" class="bg-blue w-80 rounded-2xl px-3" name="lastname" placeholder="Lastname" value="Lastname" required> -->
       <?php
-        if (isset($_POST["name"])){
+        if (isset($_POST["lastname"])){
           echo ("<input type='text' id='lastname' class='bg-blue w-80 rounded-2xl px-3' name='lastname' placeholder='Lastname' required>");
         }
         else{
