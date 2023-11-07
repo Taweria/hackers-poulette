@@ -59,8 +59,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mail->Username = $_ENV["user"];
         $mail->Password = $_ENV["password"];
         $mail->AddAddress($email);
-        $mail->FromName = "My Name";
-        $mail->Subject = "My Subject";
+        $mail->FromName = "Ali Elodie";
+        $mail->Subject = "Hackers Poulette";
         $mail->Body = $name . ", " .$lastname. ", " .$gender. ", " .$email. ", " .$country. ", " .$subject. ", " .$message;
         $mail->Host = "smtp-mail.outlook.com";
         $mail->Port = 587;
