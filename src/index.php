@@ -243,7 +243,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="checkbox" id="checkbox" name="checkbox" value="checkbox">
       </div>
 
-      <input type="submit" value="Submit" class="bg-blue px-5 py-2 font-semibold rounded-2xl cursor-pointer">
+      <input type="submit" value="Submit" class="bg-blue px-5 py-1 font-semibold rounded-2xl cursor-pointer">
     </form>
 </body>
 </html>
