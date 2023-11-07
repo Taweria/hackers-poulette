@@ -90,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="language" content="English">
     <meta name="author" content="Elodie Ali (Taweria)">
     <link href="/dist/output.css" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="../assets/storage/hackers-poulette-logo.png"
+    <link rel="icon" type="image/x-icon" href="../assets/storage/hackers-poulette-logo.png">
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Bellota&display=swap');
     </style>
