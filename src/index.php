@@ -36,16 +36,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   // Validate form data
   $errors = array();
-  if (strlen($name) < 2 OR strlen($name) > 50 OR preg_match('/^[a-zA-Z]+$/', $name)) {
+  if (strlen($name) < 2 OR strlen($name) > 50 OR !preg_match('/^[a-zA-Z]+$/', $name)) {
     $errors[] = 'Name invalid';
   }
-  if (strlen($lastname) < 2 OR strlen($lastname) > 50 OR preg_match('/^[a-zA-Z]+$/', $lastname)) {
+  if (strlen($lastname) < 2 OR strlen($lastname) > 50 OR !preg_match('/^[a-zA-Z]+$/', $lastname)) {
     $errors[] = 'Lastname invalid';
   }
   if (!filter_var($email, FILTER_VALIDATE_EMAIL) OR strlen($email) > 50 OR strlen($email) < 2) {
     $errors[] = 'Email invalid';
   }
-  if (strlen($country) < 2 OR strlen($country) > 50 OR preg_match('/^[a-zA-Z]+$/', $country)) {
+  if (strlen($country) < 2 OR strlen($country) > 50 OR !preg_match('/^[a-zA-Z]+$/', $country)) {
     $errors[] = 'Country invalid';
   }
 
