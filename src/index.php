@@ -74,11 +74,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
   
+  }
 }
-}
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -86,7 +83,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta name="title" content="Hackers Poulette">
+    <meta name="description" content="A contact form done in php for my training at BeCode.org">
+    <meta name="keywords" content="php, contact, form, html, tailwind, ">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
+    <meta name="author" content="Elodie Ali (Taweria)">
     <link href="/dist/output.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../assets/storage/hackers-poulette-logo.png"
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Bellota&display=swap');
     </style>
@@ -104,7 +108,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
       <div class="flex flex-col justify-start my-1">
         <label for="name">Name:</label>
-        <!-- <input type="text" id="name" class="bg-blue w-80 rounded-2xl px-3" name="name" placeholder="Name" value="Name" required> -->
         <?php
         if (isset($_POST["name"])){
           echo ("<input type='text' id='name' class='bg-blue w-80 rounded-2xl px-3' name='name' placeholder='Name' required>");
@@ -131,7 +134,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
       <div class="flex flex-col justify-start my-1">
         <label for="lastname">Lastname:</label>
-        <!-- <input type="text" id="lastname" class="bg-blue w-80 rounded-2xl px-3" name="lastname" placeholder="Lastname" value="Lastname" required> -->
       <?php
         if (isset($_POST["lastname"])){
           echo ("<input type='text' id='lastname' class='bg-blue w-80 rounded-2xl px-3' name='lastname' placeholder='Lastname' required>");
@@ -167,7 +169,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
       <div class="flex flex-col justify-start my-1">
         <label for="email">Email:</label>
-        <!-- <input type="email" id="email" class="bg-blue w-80 rounded-2xl px-3" name="email" placeholder="example@gmail.com" value="elodieali.pro@gmail.com" required> -->
         <?php
           if (isset($_POST["email"])){
             echo ("<input type='email' id='email' class='bg-blue w-80 rounded-2xl px-3' name='email' placeholder='example@gmail.com' required>");
@@ -194,7 +195,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
      <div class="flex flex-col justify-start my-1">
         <label for="country">Country:</label>
-        <!-- <input type="text" id="country" class="bg-blue w-80 rounded-2xl px-3" name="country" placeholder="Country" value="Belgium" required> -->
         <?php
         if (isset($_POST["email"])){
           echo ("<input type='text' id='country' class='bg-blue w-80 rounded-2xl px-3' name='country' placeholder='Country' required>");
@@ -229,7 +229,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
       <div class="flex flex-col justify-start my-1">
         <label for="message">Message:</label>
-        <!-- <textarea id="message" class="bg-blue w-80 rounded-2xl px-3" name="message" rows="5" placeholder="Type here your message">Type here your message</textarea> -->
         <?php
         if (isset($_POST["message"])){
           echo ("<textarea id='message' class='bg-blue w-80 rounded-2xl px-3' name='message' rows='3' placeholder='Type here your message'></textarea>");
